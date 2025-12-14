@@ -1,0 +1,356 @@
+/* Layout tổng thể */
+.dashboardContainer {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f3f4f6; /* Màu nền xám sáng hiện đại */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    transition: background-color 0.3s ease; /* Hỗ trợ chuyển mượt mà cho dark mode */
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .dashboardContainer {
+        background-color: #121212; /* Nền tối cho dark mode */
+    }
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); /* Gradient tối cho chiều sâu */
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+    z-index: 10;
+    border-right: 1px solid rgba(255,255,255,0.05); /* Biên giới mờ cho glassmorphism */
+}
+
+@media (prefers-color-scheme: dark) {
+    .sidebar {
+        background: linear-gradient(180deg, #18181b 0%, #09090b 100%);
+    }
+}
+
+.logoArea {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-left: 10px;
+    animation: fadeIn 0.5s ease-out; /* Micro animation cho logo */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logoIcon {
+    font-size: 32px;
+    color: #38bdf8; /* Xanh dương sáng làm điểm nhấn */
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.logoIcon:hover {
+    transform: rotate(360deg); /* Animation vui cho icon */
+}
+
+.logoText {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Menu Items */
+.navMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    position: relative; /* Để thêm pseudo-element cho hiệu ứng */
+}
+
+.navItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.05);
+    opacity: 0;
+    border-radius: 12px;
+    transition: opacity 0.3s ease;
+}
+
+.navItem:hover::before {
+    opacity: 1;
+}
+
+.navItem .icon {
+    width: 24px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.navItem:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.navItem:hover .icon {
+    transform: scale(1.1); /* Micro animation cho icon */
+}
+
+/* Active State */
+.navItem.active {
+    background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.navItem.active::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    animation: pulse 2s infinite; /* Hiệu ứng pulse cho active */
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.2); opacity: 0; }
+}
+
+.divider {
+    height: 1px;
+    background-color: #334155;
+    margin: 20px 0;
+    opacity: 0.5;
+}
+
+.sidebarFooter {
+    font-size: 12px;
+    color: #64748b;
+    text-align: center;
+    margin-top: auto;
+    animation: fadeIn 1s ease-out;
+}
+
+/* --- MAIN CONTENT --- */
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    background-color: #ffffff; /* Nền trắng cho nội dung */
+    transition: background-color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    .mainContent {
+        background-color: #18181b;
+    }
+}
+
+/* Top Header */
+.topHeader {
+    height: 80px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Bóng mờ nhẹ */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    .topHeader {
+        background-color: #27272a;
+        border-bottom: 1px solid #3f3f46;
+    }
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: #b91c1c; /* Đổi sang màu ruby red theo xu hướng 2025 cho phần Home và các tiêu đề khác */
+    margin: 0;
+    letter-spacing: -0.5px; /* Typography hiện đại */
+    transition: color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    .pageTitle {
+        color: #ef4444; /* Phiên bản sáng hơn cho dark mode để đảm bảo tương phản */
+    }
+}
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.userName {
+    font-weight: 600;
+    color: #475569;
+    transition: color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    .userName {
+        color: #d4d4d8;
+    }
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #3b82f6;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.3); /* Viền glow */
+    transition: box-shadow 0.3s ease;
+}
+
+.avatar:hover {
+    box-shadow: 0 0 0 4px rgba(59,130,246,0.5); /* Hiệu ứng hover glow */
+}
+
+/* Content Body */
+.contentBody {
+    flex: 1;
+    padding: 30px 40px;
+    overflow-y: auto; 
+    scrollbar-width: thin; /* Thanh cuộn mỏng hiện đại */
+    scrollbar-color: #94a3b8 #f3f4f6;
+}
+
+.contentBody::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contentBody::-webkit-scrollbar-thumb {
+    background-color: #94a3b8;
+    border-radius: 4px;
+}
+
+.contentBody::-webkit-scrollbar-track {
+    background-color: #f3f4f6;
+}
+
+@media (prefers-color-scheme: dark) {
+    .contentBody {
+        scrollbar-color: #52525b #18181b;
+    }
+
+    .contentBody::-webkit-scrollbar-thumb {
+        background-color: #52525b;
+    }
+
+    .contentBody::-webkit-scrollbar-track {
+        background-color: #18181b;
+    }
+}
+
+/* Export Button */
+.exportButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 15px;
+    background: linear-gradient(90deg, #4CAF50 0%, #45a049 100%); /* Gradient cho nút */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    margin-right: 20px;
+    box-shadow: 0 2px 5px rgba(76,175,80,0.2);
+}
+
+.exportButton:hover {
+    background: linear-gradient(90deg, #45a049 0%, #3e8e41 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(76,175,80,0.3);
+}
+
+.exportButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(76,175,80,0.2);
+}
+.globalSearchBar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: rgba(15, 24, 40, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 1.2rem 2rem;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.globalSearchInput {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    border: 2px solid transparent;
+    background: rgba(30, 41, 59, 0.8);
+    color: #e0e7ff;
+    font-size: 1.1rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.globalSearchInput:focus {
+    outline: none;
+    border-color: #60a5fa;
+    background: rgba(30, 41, 59, 1);
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.3), 0 10px 30px rgba(96, 165, 250, 0.2);
+    transform: translateY(-2px);
+}
+
+.globalSearchInput::placeholder {
+    color: #94a3b8;
+    font-style: italic;
+}

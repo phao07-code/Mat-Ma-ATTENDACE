@@ -1,0 +1,229 @@
+.container {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e7ff;
+}
+
+/* HIỆU ỨNG NỀN 2025 */
+.bgOverlay {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(120, 219, 226, 0.2) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+    pointer-events: none;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+}
+
+/* HEADER */
+.header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.logoWrapper {
+    position: relative;
+}
+
+.logoGlow {
+    position: relative;
+    padding: 1rem;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+    50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.8); }
+}
+
+.logo {
+    border-radius: 50%;
+    border: 4px solid rgba(59, 130, 246, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.titleBox {
+    text-align: center;
+}
+
+.schoolName {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa, #f0abfc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 20px rgba(167, 114, 255, 0.4);
+}
+
+.highlight {
+    background: linear-gradient(90deg, #10b981, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.badge {
+    margin-top: 0.8rem;
+    font-size: 1.1rem;
+    color: #94a3b8;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+/* NỘI DUNG CHÍNH */
+.content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.subjectCard {
+    background: rgba(59, 130, 246, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 20px;
+    padding: 2rem 3rem;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+    width: 100%;
+    max-width: 600px;
+}
+
+.subjectTitle {
+    margin: 0 0 1rem 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #60a5fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.icon {
+    font-size: 2.5rem;
+}
+
+.subjectCode {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.teacherCard {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.teacherAvatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #ec4899, #f43f5e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4);
+}
+
+.avatarPlaceholder {
+    font-size: 2.2rem;
+}
+
+.teacherInfo h3 {
+    margin: 0 0 0.5rem 0;
+    color: #94a3b8;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.teacherName {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e0e7ff;
+}
+
+.teacherTitle {
+    margin: 0.5rem 0 0 0;
+    color: #60a5fa;
+    font-style: italic;
+}
+
+.footerNote {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.footerNote p {
+    margin: 0.8rem 0;
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+    .schoolName {
+        font-size: 2.8rem;
+    }
+    .teacherCard {
+        flex-direction: column;
+        text-align: center;
+    }
+    .subjectTitle {
+        font-size: 1.8rem;
+        flex-direction: column;
+    }
+}

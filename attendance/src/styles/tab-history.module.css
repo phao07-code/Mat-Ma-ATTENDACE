@@ -1,0 +1,135 @@
+/* src/styles/tab-history.module.css */
+.historyContainer {
+    padding: 20px;
+    background: #1a1f2e;
+    min-height: 100vh;
+    color: #e0e0e0;
+}
+
+.filterBar {
+    display: flex;
+    align-items: flex-end; /* ✅ ĐÃ SỬA: Thay 'end' bằng 'flex-end' để tương thích tốt hơn */
+    gap: 20px;
+    padding: 20px;
+    background: #252b3d;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filterGroup label {
+    font-weight: 600;
+    color: #60a5fa;
+}
+
+.filterGroup input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #333;
+    color: white;
+}
+
+.filterBtn {
+    padding: 12px 24px;
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filterBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.filterBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.tableContainer {
+    background: #252b3d;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.tableHeader {
+    padding: 20px;
+    background: linear-gradient(90deg, #10b981, #059669);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tableHeader h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.recordCount {
+    background: rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.historyTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.historyTable th {
+    background: #334155;
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #94a3b8;
+}
+
+.historyTable td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #334155;
+}
+
+.historyTable tbody tr:hover {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.studentId {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #60a5fa;
+}
+
+.loadingRow, .emptyRow {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.1rem;
+    color: #94a3b8;
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #60a5fa;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

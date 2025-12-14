@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 50, 30, 20; /* Dark brown for text, inspired by Mocha Mousse tones */
+  --background-start-rgb: 240, 230, 220; /* Light beige start for warm neutral gradient */
+  --background-end-rgb: 255, 255, 255; /* Fade to white */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 230, 220, 210; /* Light beige for text in dark mode */
+    --background-start-rgb: 30, 20, 10; /* Dark brown start */
+    --background-end-rgb: 0, 0, 0; /* Fade to black */
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}

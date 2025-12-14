@@ -1,0 +1,254 @@
+/* === TOÀN BỘ CONTAINER VÀ CÁC THÀNH PHẦN === */
+.container {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    height: 100%;
+    /* Gradient tối hơn, hiện đại hơn */
+    background: linear-gradient(135deg, #0f172a 0%, #020817 100%);
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif; /* Font hiện đại */
+}
+
+/* === PHẦN THẺ THÔNG TIN VÀ BẢNG CHUNG (GLASSMORPHISM) === */
+.cardSection, .tableSection {
+    background: rgba(255, 255, 255, 0.05); /* Nền tối nhẹ */
+    border-radius: 24px; /* Bo góc lớn hơn */
+    overflow: hidden;
+    backdrop-filter: blur(15px); /* Hiệu ứng Glassmorphism mạnh hơn */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Đường viền rõ hơn */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Shadow sâu hơn */
+    transition: transform 0.3s ease-in-out;
+}
+
+.cardSection:hover, .tableSection:hover {
+    transform: translateY(-5px);
+}
+
+/* === CARD SECTION === */
+.cardSection {
+    flex: 1;
+}
+
+.cardHeader {
+    /* Gradient màu xanh tươi hơn */
+    background: linear-gradient(90deg, #10b981, #059669); 
+    padding: 25px 30px;
+}
+
+.cardHeader h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.cardBody {
+    padding: 30px 30px;
+}
+
+.infoRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.label {
+    font-size: 1.05rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #38bdf8; /* Màu xanh sáng */
+    letter-spacing: 0.8px;
+}
+
+/* === TABLE SECTION === */
+.tableSection {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.tableHeader {
+    /* Gradient màu nhấn khác biệt */
+    background: linear-gradient(90deg, #3b82f6, #2563eb); 
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.tableHeader h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.dateFilterGroup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Dùng font-size 0 để icon lịch không bị ảnh hưởng bởi line-height */
+    font-size: 0; 
+}
+
+.dateLabel {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-right: 5px;
+}
+
+.dateInput {
+    padding: 8px 12px;
+    border-radius: 8px;
+    /* Viền mỏng, màu hơi sáng */
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    background: rgba(0, 0, 0, 0.2); /* Nền tối nhẹ, độ tương phản cao */
+    color: #e2e8f0;
+    font-size: 1rem;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    /* Loại bỏ mũi tên mặc định trên Chrome/Safari */
+    appearance: none; 
+    -webkit-appearance: none;
+}
+
+.dateInput:focus {
+    border-color: #fca311; /* Màu Vàng/Cam nổi bật khi focus */
+    background: rgba(0, 0, 0, 0.4);
+    outline: none;
+}
+
+/* 💡 CHỈNH SỬA MÀU SẮC CHO ICON LỊCH */
+.dateInput::-webkit-calendar-picker-indicator {
+    /* Đảo ngược màu (thành trắng) và sau đó thêm bộ lọc màu cụ thể */
+    filter: invert(1) brightness(1.2) sepia(1) hue-rotate(180deg) saturate(3); 
+    color: #fca311; /* Set màu icon thành Vàng/Cam (Dùng cho Firefox) */
+    cursor: pointer;
+    font-size: 1.2rem; /* Phóng to icon một chút */
+    margin-right: -5px;
+}
+/* Đối với Firefox */
+.dateInput[type="date"] {
+    color: #e2e8f0;
+}
+.dateInput[type="date"]::-moz-placeholder {
+    color: #e2e8f0;
+}
+
+
+.recordCount {
+    font-size: 0.9rem;
+    color: #fff; 
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+.tableWrapper {
+    flex: 1;
+    padding: 20px 30px;
+    overflow-y: auto;
+}
+
+.modernTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: transparent;
+}
+
+.modernTable th {
+    text-align: left;
+    padding: 16px 15px;
+    background: rgba(255, 255, 255, 0.08); 
+    color: #cbd5e1;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.modernTable td {
+    padding: 16px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.2s ease;
+}
+
+.modernTable tbody tr:hover {
+    background: rgba(59, 130, 246, 0.1); 
+    transform: none; 
+    box-shadow: none;
+}
+
+.modernTable tbody tr:hover td {
+    color: #fff;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 60px 20px;
+    color: #94a3b8;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.loadingRow {
+    text-align: center;
+    padding: 30px;
+    color: #38bdf8;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #38bdf8;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 12px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+    .cardSection, .tableSection {
+        flex: none;
+    }
+    .headerContent {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .recordCount {
+        margin-left: 0;
+    }
+}
